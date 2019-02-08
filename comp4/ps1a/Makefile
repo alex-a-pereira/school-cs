@@ -1,21 +1,17 @@
-CPP = g++
-CPPFLAGS = -Wall -g -std=c++11
-LIBPATHS = /
+CC = g++
+CFLAGS = -g -Og -Wall -Werror -ansi -pedantic
+LIBS = -lboost_unit_test_framework
 
-app: main.o LFSR.o
-	$(CPP) $(CPPFLAGS) -o app main.o LFSR.o
+all: ps1a
 
-unit_test: test.o LFSR.o
-	$(CPP) $(CPPFLAGS) -o unit_test test.o LFSR.o
+ps1a: test.o LFSR.o
+	$(CC) $^ -o $@ $(LIBS)
 
-main.o: main.cpp
-	$(CPP) $(CPPFLAGS) -c main.cpp -o main.o
+test.o: test.cpp LFSR.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-LFSR.o: LFSR.hpp LFSR.cpp
-	$(CPP) $(CPPFLAGS) -c LFSR.cpp -o LFSR.o
+LFSR.o: LFSR.cpp LFSR.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-test.o: test.cpp
-	$(CPP) $(CPPFLAGS) -c test.cpp -o test.o
-
-clean :
-	rm * .o app test *~
+clean:
+	rm *.o ps1a
