@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type"
+    content="text/html; charset=UTF-8" />
+  <script type="text/javascript"
+    src="./shapes.js"></script>
+  <script type="text/javascript"
+    src="./inputs.js"></script>
+</head>
+
+<body>
+  <h2>DDA Line</h2>
+  <canvas id="DDA"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h2>Midpoint Line</h2>
+  <canvas id="MPL"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h2>Midpoint Circle</h2>
+  <canvas id="MPC"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+
+  <h2>Midpoint Ellipse</h2>
+  <canvas id="MPE"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h2>Canvas Primitives</h2>
+  <h4>Line</h4>
+  <canvas id="prim-line"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h4>Circle</h4>
+  <canvas id="prim-circle"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h4>Ellipse</h4>
+  <canvas id="prim-ellipse"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <script>
+    // Draw my shapes :)
+    ddaLine(contextFromId("DDA"), inp.lineStart, inp.lineEnd);
+    midpointLine(contextFromId("MPL"), inp.lineStart, inp.lineEnd);
+    midpointCircle(contextFromId("MPC"), inp.circleRadius);
+    midpointEllipse(contextFromId("MPE"), inp.ellipseWidth, inp.ellipseHeight);
+
+    // Draw shapes with canvas primitives
+    primitiveLine(contextFromId("prim-line"), inp.lineStart, inp.lineEnd);
+    primitiveCircle(contextFromId("prim-circle"), inp.circleRadius);
+    primitiveEllipse(contextFromId("prim-ellipse"), inp.ellipseWidth,
+      inp.ellipseHeight);
+  </script>
+
+</body>
+
+</html>
