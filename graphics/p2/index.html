@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type"
+    content="text/html; charset=UTF-8" />
+  <script type="text/javascript"
+    src="./shapes.js"></script>
+</head>
+
+<body>
+
+  <h2>Canvas Primitives</h2>
+  <h4>Line</h4>
+  <canvas id="prim-line"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h4>Circle</h4>
+  <canvas id="prim-circle"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <h4>Ellipse</h4>
+  <canvas id="prim-ellipse"
+    width="400"
+    height="200"
+    style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+  <script>
+    let lineStart = {
+      x: 30,
+      y: 0
+    };
+    let lineEnd = {
+      x: 250,
+      y: 50
+    };
+
+    const circleRadius = 30;
+    const ellipseWidth = 40;
+    const ellipseHeight = 20;
+
+    const center = {
+      x: 200,
+      y: 100
+    };
+    const gridSize = {
+      x: 400,
+      y: 200
+    };
+
+    // Specifiy transformation specs :)
+    let translateX = -50;
+    let translateY = 40;
+    let scaleFactor = 2;
+    let rotationAngle = 45;
+
+
+    let MODE;
+    // Uncomment the mode you'd like. 
+    // MODE = "T"; // TRANSLATE
+    // MODE = "S"; // SCALE
+    MODE = "R"; // ROTATE
+
+
+    // Draw shapes with canvas primitives
+    primitiveLine(contextFromId("prim-line"), lineStart, lineEnd);
+    primitiveCircle(contextFromId("prim-circle"), circleRadius, position =
+      center);
+    primitiveEllipse(contextFromId("prim-ellipse"), ellipseWidth, ellipseHeight,
+      position = center);
+
+    switch (MODE) {
+      case "T":
+        translation(contextFromId("prim-line"), translateX, translateY,
+          gridSize.x,
+          gridSize.y);
+        translation(contextFromId("prim-circle"), translateX, translateY,
+          gridSize.x,
+          gridSize.y);
+        translation(contextFromId("prim-ellipse"), translateX, translateY,
+          gridSize.x,
+          gridSize.y);
+        break;
+      case "S":
+        scale(contextFromId("prim-line"), scaleFactor, gridSize.x, gridSize.y);
+        scale(contextFromId("prim-circle"), scaleFactor, gridSize.x, gridSize.y,
+          position =
+          center);
+        scale(contextFromId("prim-ellipse"), scaleFactor, gridSize.x, gridSize.y,
+          position = center);
+        break;
+      case "R":
+        rotate(contextFromId("prim-line"), rotationAngle, gridSize.x, gridSize.y);
+        rotate(contextFromId("prim-circle"), rotationAngle, gridSize.x,
+          gridSize.y, position =
+          center);
+        rotate(contextFromId("prim-ellipse"), rotationAngle, gridSize.x,
+          gridSize.y, position =
+          center);
+        break;
+      default:
+        console.log("Make better choices");
+
+    }
+  </script>
+
+</body>
+
+</html>
